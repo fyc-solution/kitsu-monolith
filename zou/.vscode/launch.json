@@ -1,0 +1,57 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Flask",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "flask",
+      "env": {
+        "FLASK_APP": "zou.app",
+        "FLASK_DEBUG": "1",
+        "DEBUG": "1",
+        "MAIL_DEBUG_BODY": "1",
+        "MAIL_ENABLED": "False"
+      },
+      "args": ["run", "--no-reload"],
+      "jinja": true,
+      "justMyCode": false
+    },
+    {
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}${pathSeparator}${env:PYTHONPATH}"
+      },
+      "justMyCode": false
+    },
+    {
+      "name": "Python: Test current File",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}"],
+      "cwd": "${workspaceFolder}",
+      "env": { "DB_DATABASE": "zoudbtest" },
+      "justMyCode": false
+    },
+    {
+      "name": "Python: Real Time",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/zou/event_stream.py",
+      "console": "integratedTerminal",
+      "cwd": "${fileDirname}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}${pathSeparator}${env:PYTHONPATH}",
+        "DEBUG": "1"
+      },
+      "gevent": true,
+      "justMyCode": false
+    }
+  ]
+}
