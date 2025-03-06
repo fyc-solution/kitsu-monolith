@@ -1,0 +1,7 @@
+# ignore local volumes
+/db
+/postgres
+/tmp
+/previews
+/indexer
+/redis
