@@ -1,0 +1,29 @@
+---
+name: 'Kitsu CI'
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    name: Test with Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22, current]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+      - name: Run tests
+        env:
+          HUSKY: 0
+          NODE_OPTIONS: '--max_old_space_size=8192'
+        run: |
+          echo "Node.js $(node -v)"
+          echo "npm v$(npm -v)"
+          npm ci
+          npm run lint -- --quiet
+          npm run test:unit
