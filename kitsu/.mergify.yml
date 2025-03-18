@@ -1,6 +1,0 @@
-pull_request_rules:
-  - name: Automatic assign
-    conditions: []
-    actions:
-      assign:
-        users: [frankrousseau]

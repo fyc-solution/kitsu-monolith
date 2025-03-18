@@ -1,1 +1,0 @@
-export const DEFAULT_NB_FRAMES_PICTURE = 48

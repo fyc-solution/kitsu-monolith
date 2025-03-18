@@ -5,3 +5,4 @@
 /previews
 /indexer
 /redis
+# prevent dependencies to be pushed
